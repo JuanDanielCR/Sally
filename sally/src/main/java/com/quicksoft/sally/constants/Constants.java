@@ -12,7 +12,7 @@ public class Constants {
 	public static final String POPULARES_VIEW = "populares";
 	public static final String CATEGORIAS_VIEW = "categorias";
 	public static final String PLANTILLAS_VIEW = "plantillas";
-	public static final String AGREGAR_PLANTILLA = "agregarPlantilla";
+	public static final String AGREGAR_PLANTILLA = "/plantillas/agregarPlantilla";
 	//Resultados
 	public static final String RESULTADOS_VIEW = "resultados";
 	//Pagos

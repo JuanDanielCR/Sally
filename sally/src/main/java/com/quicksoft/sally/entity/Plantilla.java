@@ -1,11 +1,15 @@
 package com.quicksoft.sally.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -36,11 +40,16 @@ public class Plantilla {
 	@JoinColumn(name="id_cliente")
 	private Cliente cliente;
 	
+	@ManyToMany
+	@JoinTable(name="plantilla_tipo")
+	public List<Tipo> tipos;
+	
 	public Plantilla() {
 		
 	}
+	
 	public Plantilla(Integer idPlantilla, String objetivo, Integer version, Integer isPropia, Integer estatus,
-			Integer idCreador, Cliente cliente) {
+			Integer idCreador, Cliente cliente, List<Tipo> tipos) {
 		super();
 		this.idPlantilla = idPlantilla;
 		this.objetivo = objetivo;
@@ -49,7 +58,9 @@ public class Plantilla {
 		this.estatus = estatus;
 		this.idCreador = idCreador;
 		this.cliente = cliente;
+		this.tipos = tipos;
 	}
+
 	public Integer getIdPlantilla() {
 		return idPlantilla;
 	}
@@ -91,6 +102,14 @@ public class Plantilla {
 	}
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public List<Tipo> getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(List<Tipo> tipos) {
+		this.tipos = tipos;
 	}
 	
 	

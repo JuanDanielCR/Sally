@@ -1,7 +1,16 @@
 package com.quicksoft.sally.entity;
 
-//@Entity
-//@Table(name="tipo")
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tipoPlantilla")
 public class Tipo {
-	//muchos a muchos
+	@ManyToMany(mappedBy="tipos")
+	public List<Plantilla> plantillas;
+	
+	
 }
