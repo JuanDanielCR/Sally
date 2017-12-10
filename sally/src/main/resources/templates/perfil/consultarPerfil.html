@@ -1,375 +1,349 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SALLY | Perfil</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Base Sally</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+<link th:href="@{/css/plugins/toastr/toastr.min.css}" rel="stylesheet" />
+<link th:href="@{/js/plugins/gritter/jquery.gritter.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/animate.css}" rel="stylesheet" />
+<link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
-
 <body>
+	<div id="wrapper">
+		<!-- Menu lateral -->
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<span> <img alt="image" class="img-circle"
+								src="../img/profile_small.jpg" />
+							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear"> <span class="block m-t-xs"> <strong
+										class="font-bold" th:text="${nombre}"></strong>
+								</span> <span class="text-muted text-xs block">Usuario Normal <b
+										class="caret"></b></span>
+							</span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li><a href="/perfil/consulta">Mi Perfil</a></li>
+								<li><a href="/perfil/cuenta">Cuenta</a></li>
+								<li class="divider"></li>
+							</ul>
+						</div>
+						<div class="logo-element">Sally</div>
+					</li>
+					<li><a href="#"><i class="fa fa-user-circle-o"></i> <span
+							class="nav-label">Explorar</span> <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="/plantilla/populares">Populares</a></li>
+							<li><a href="/plantilla/recomendadas">Recomendadas</a></li>
+							<li><a href="/plantilla/categorias">Categorías</a></li>
+						</ul></li>
+					<li><a href="#"><i class="fa fa-bar-chart-o"></i> <span
+							class="nav-label">Mis Plantillas</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a href="/plantilla/consulta">Ver Plantillas</a></li>
+							<li><a href="/plantilla/agregar">Crear Plantilla</a></li>
+						</ul></li>
+					<li><a href="/resultados/historial"><i
+							class="fa fa-diamond"></i> <span class="nav-label">Historial
+								de Resultados</span></a></li>
+					<li><a href="#"><i class="fa fa-bar-chart-o"></i> <span
+							class="nav-label">Mis Compras</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a href="/pagos/agregar">Agregar Método de Pago</a></li>
+							<li><a href="/pagos/metodos">Ver Métodos de Pago</a></li>
+							<li><a href="/resultados/historial">Historial de Compras</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Menu lateral -->
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom"
+							action="search_results.html">
+							<div class="form-group">
+								<input type="text" placeholder="Buscar..." class="form-control"
+									name="top-search" id="top-search" />
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+						<li><span class="m-r-sm text-muted welcome-message">Sally</span>
+						</li>
+						<li class="dropdown"><a class="dropdown-toggle count-info"
+							data-toggle="dropdown" href="#"> <i class="fa fa-bell"></i> <span
+								class="label label-primary">3</span>
+						</a>
+							<ul class="dropdown-menu dropdown-alerts">
+								<li><a href="notificacion.html">
+										<div>
+											<i class="fa fa-check-circle-o"></i> Tu plantilla1 ha sido
+											publicada <span class="pull-right text-muted small">
+												hace 10 minutos</span>
+										</div>
+								</a></li>
+								<li class="divider"></li>
+								<li>
+									<div class="text-center link-block">
+										<a href="notification.html"> <strong>Ver todas
+												las notificaciones</strong> <i class="fa fa-angle-right"></i>
+										</a>
+									</div>
+								</li>
+							</ul></li>
+						<li>
+							<form th:action="@{/sally/logout}" method="POST">
+								<input type="submit" class="btn btn-success" value="Salir" />
+							</form>
+						</li>
+					</ul>
+				</nav>
 
-    <div id="wrapper">
+				<div class="row wrapper border-bottom white-bg page-heading">
+					<div class="col-lg-10">
+						<h2>Perfil</h2>
+					</div>
+					<div class="col-lg-2"></div>
+				</div>
+				<div class="wrapper wrapper-content animated fadeInRight">
+					<div class="row m-b-lg m-t-lg">
+						<div class="col-md-6">
 
-    <nav class="navbar-default navbar-static-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav metismenu" id="side-menu">
-                <li class="nav-header">
-                    <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
-                             </span>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Paul Krugman</strong>
-                             </span> <span class="text-muted text-xs block">Experto<b class="caret"></b></span> </span> </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Perfil</a></li>
-                            <li><a href="contacts.html">Cuenta</a></li>
-                            <li class="divider"></li>
-                            <li><a href="login.html">Cerrar sesión</a></li>
-                        </ul>
-                    </div>
-                    <div class="logo-element">
-                        S+
-                    </div>
-                </li>
-                <li>
-                    <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
-                </li>
-                <li>
-                    <a href="explorar.html"><i class="fa fa-binoculars"></i> <span class="nav-label">Explorar</span><span class="fa arrow"></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="categorias.html">Mas populares</a></li>
-                        <li><a href="graph_morris.html">Agregadas recientemente</a></li>
-                        <li><a href="graph_rickshaw.html">Recomendadas</a></li>
-                        <li><a href="graph_chartjs.html">Categorias</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-file-o"></i> <span class="nav-label">Mis plantillas</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="graph_flot.html">Plantillas</a></li>
-                        <li><a href="graph_morris.html">Plantillas adquiridas</a></li>
-                        <li><a href="graph_rickshaw.html">Crear plantilla</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="mailbox.html"><i class="fa fa-history"></i> <span class="nav-label">Historial de resultados</span></a>
-                </li>
-                <li>
-                    <a href="metrics.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Compras</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="form_basic.html">Agregar método de pago</a></li>
-                        <li><a href="form_advanced.html">Ver métodos de pago</a></li>
-                        <li><a href="form_wizard.html">Promociones</a></li>
-                        <li><a href="form_file_upload.html">Historial de compras</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
+							<div class="profile-image">
+								<img src="../img/Paul.png" class="img-circle circle-border m-b-md"
+									alt="profile"/>
+							</div>
+							<div class="profile-info">
+								<div class="">
+									<div>
+										<h2 class="no-margins">Paul Krugman</h2>
+										<h4>Doctor en Economía</h4>
+										<small> The rich are different from you and me: they
+											have more influence. </small>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<table class="table small m-b-xs">
+								<tbody>
+									<tr>
+										<td><strong>150</strong> Plantillas</td>
+									</tr>
+									<tr>
+										<td><strong>53</strong> Comentarios</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 
-        <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom">
-        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" action="search_results.html">
-                <div class="form-group">
-                    <input type="text" placeholder="Buscar plantillas..." class="form-control" name="top-search" id="top-search">
-                </div>
-            </form>
-        </div>
-            <ul class="nav navbar-top-links navbar-right">
-                <li>
-                    <span class="m-r-sm text-muted welcome-message">Sally</span>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell"></i>  <span class="label label-primary">1</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="notificacion.html">
-                                <div>
-                                    <i class="fa fa-check-circle-o"></i> Tu plantilla1 ha sido publicada
-                                    <span class="pull-right text-muted small"> hace 10 minutos</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="text-center link-block">
-                                <a href="notification.html">
-                                    <strong>Ver todas las notificaciones</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
-                </li>
-            </ul>
+					</div>
+					<div class="row">
+						<div class="col-lg-3">
+							<div class="ibox">
+								<div class="ibox-content">
+									<h3>Información</h3>
+									<p class="small">
+										Doctorado en Economía en el Instituto Tecnológico de
+										Massachusetts (MIT) <br /> Ha escrito más de 200 artículos y
+										21 libros ,alguno de ellos académicos y otros de divulgación.<br />
+										Su Economía Internacional: La teoría y política es un libro de
+										texto estándar en la economía internacional.También ha escrito
+										más de 750 columnas sobre temas económicos y políticos para
+										The New York Times, Fortune y Slate.
+									</p>
+									<p class="small font-bold">
+										<span><i class="fa fa-circle text-navy"></i> Usuario
+											activo</span>
+									</p>
+								</div>
+							</div>
+							<div class="ibox">
+								<div class="widget lazur-bg p-xl">
+									<h2>Contacto</h2>
+									<ul class="list-unstyled m-t-md">
+										<li><span class="fa fa-envelope m-r-xs"></span> <label>Email:</label>
+											mike@mail.com</li>
+										<li><span class="fa fa-phone m-r-xs"></span> <label>Contact:</label>
+											(55)4678 3462</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-5">
+							<div class="ibox-content">
+								<div>
+									<div class="chat-activity-list">
+										<div class="chat-element">
+											<a href="#" class="pull-left"> <img alt="image"
+												class="img-circle" src="../img/a2.jpg"/>
+											</a>
+											<div class="media-body ">
+												<small class="pull-right text-navy">1m ago</small> <strong>Mike
+													Smith</strong>
+												<p class="m-b-xs">Lorem Ipsum is simply dummy text of
+													the printing and typesetting industry. Lorem Ipsum has been
+												</p>
+												<small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+											</div>
+										</div>
+										<div class="chat-element right">
+											<a href="#" class="pull-right"> <img alt="image"
+												class="img-circle" src="../img/a4.jpg"/>
+											</a>
+											<div class="media-body text-right ">
+												<small class="pull-left">5m ago</small> <strong>John
+													Smith</strong>
+												<p class="m-b-xs">Lorem Ipsum is simply dummy text of
+													the printing.</p>
+												<small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+											</div>
+										</div>
+										<div class="chat-element ">
+											<a href="#" class="pull-left"> <img alt="image"
+												class="img-circle" src="../img/a2.jpg"/>
+											</a>
+											<div class="media-body ">
+												<small class="pull-right">2h ago</small> <strong>Mike
+													Smith</strong>
+												<p class="m-b-xs">Lorem Ipsum is simply dummy text of
+													the printing and typesetting industry. Lorem Ipsum has been
+												</p>
+												<small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="chat-form">
+									<form role="form">
+										<div class="form-group">
+											<textarea class="form-control" placeholder="Comentario"></textarea>
+										</div>
+										<div class="text-right">
+											<button type="submit" class="btn btn-sm btn-primary m-t-n-xs">
+												<strong>Enviar Comentario</strong>
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 m-b-lg">
+							<h2>
+								<strong>Plantillas agregadas por mi</strong>
+							</h2>
+							<div id="vertical-timeline"
+								class="vertical-container light-timeline no-margins">
+								<div class="vertical-timeline-block">
+									<div class="vertical-timeline-icon blue-bg">
+										<i class="fa fa-file-text"></i>
+									</div>
 
-        </nav>
-        </div>
-            <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-10">
-                    <h2>Perfil</h2>
-                </div>
-                <div class="col-lg-2">
+									<div class="vertical-timeline-content">
+										<h2>Plantilla 1</h2>
+										<p>Conference on the sales results for the previous year.
+											Monica please examine sales trends in marketing and products.
+											Below please find the current status of the sale.</p>
+										<a href="#" class="btn btn-sm btn-primary">Ver mas</a> <span
+											class="vertical-date"> Today <br/> <small>Dec
+												24</small>
+										</span>
+									</div>
+								</div>
 
-                </div>
-            </div>
-        <div class="wrapper wrapper-content animated fadeInRight">
-            <div class="row m-b-lg m-t-lg">
-                <div class="col-md-6">
+								<div class="vertical-timeline-block">
+									<div class="vertical-timeline-icon blue-bg">
+										<i class="fa fa-file-text"></i>
+									</div>
 
-                    <div class="profile-image">
-                        <img src="img/Paul.png" class="img-circle circle-border m-b-md" alt="profile">
-                    </div>
-                    <div class="profile-info">
-                        <div class="">
-                            <div>
-                                <h2 class="no-margins">
-                                    Paul Krugman
-                                </h2>
-                                <h4>Doctor en Economía</h4>
-                                <small>
-                                    The rich are different from you and me: they have more influence.
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <table class="table small m-b-xs">
-                        <tbody>
-                        <tr>
-                            <td>
-                                <strong>150</strong> Plantillas
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>53</strong> Comentarios
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="ibox">
-                        <div class="ibox-content">
-                            <h3>Información</h3>
-                            <p class="small">
-                                Doctorado en Economía en el Instituto Tecnológico de Massachusetts (MIT)
-                                <br/>
-                                Ha escrito más de 200 artículos y 21 libros ,alguno de ellos académicos y otros de divulgación.<br/>
-                                Su Economía Internacional: La teoría y política es un libro de texto estándar en la economía internacional.También ha escrito más de 750 columnas sobre temas económicos y políticos para The New York Times, Fortune y Slate.
-                            </p>
-                            <p class="small font-bold">
-                                <span><i class="fa fa-circle text-navy"></i> Usuario activo</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="ibox">
-                        <div class="widget lazur-bg p-xl">
-                                <h2>
-                                    Contacto
-                                </h2>
-                        <ul class="list-unstyled m-t-md">
-                            <li>
-                                <span class="fa fa-envelope m-r-xs"></span>
-                                <label>Email:</label>
-                                    mike@mail.com
-                            </li>
-                            <li>
-                                <span class="fa fa-phone m-r-xs"></span>
-                                <label>Contact:</label>
-                                    (55)4678 3462
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="ibox-content">
-                        <div>
-                            <div class="chat-activity-list">
-                                <div class="chat-element">
-                                    <a href="#" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a2.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                        <small class="pull-right text-navy">1m ago</small>
-                                        <strong>Mike Smith</strong>
-                                        <p class="m-b-xs">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                        </p>
-                                        <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                    </div>
-                                </div>
-                                <div class="chat-element right">
-                                    <a href="#" class="pull-right">
-                                        <img alt="image" class="img-circle" src="img/a4.jpg">
-                                    </a>
-                                    <div class="media-body text-right ">
-                                        <small class="pull-left">5m ago</small>
-                                        <strong>John Smith</strong>
-                                        <p class="m-b-xs">
-                                            Lorem Ipsum is simply dummy text of the printing.
-                                        </p>
-                                        <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                    </div>
-                                </div>
-                                <div class="chat-element ">
-                                    <a href="#" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a2.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                        <small class="pull-right">2h ago</small>
-                                        <strong>Mike Smith</strong>
-                                        <p class="m-b-xs">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                        </p>
-                                        <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat-form">
-                            <form role="form">
-                                <div class="form-group">
-                                    <textarea class="form-control" placeholder="Comentario"></textarea>
-                                </div>
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Enviar Comentario</strong></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 m-b-lg">
-                    <h2><strong>Plantillas agregadas por mi</strong></h2>
-                    <div id="vertical-timeline" class="vertical-container light-timeline no-margins">
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon blue-bg">
-                                <i class="fa fa-file-text"></i>
-                            </div>
+									<div class="vertical-timeline-content">
+										<h2>Plantilla 2</h2>
+										<p>Lorem Ipsum is simply dummy text of the printing and
+											typesetting industry. Lorem Ipsum has been the industry's
+											standard dummy text ever since.</p>
+										<a href="#" class="btn btn-sm btn-primary"> Ver mas</a> <span
+											class="vertical-date"> Today <br/> <small>Dec
+												24</small>
+										</span>
+									</div>
+								</div>
 
-                            <div class="vertical-timeline-content">
-                                <h2>Plantilla 1</h2>
-                                <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
-                                </p>
-                                <a href="#" class="btn btn-sm btn-primary">Ver mas</a>
-                                    <span class="vertical-date">
-                                        Today <br>
-                                        <small>Dec 24</small>
-                                    </span>
-                            </div>
-                        </div>
+								<div class="vertical-timeline-block">
+									<div class="vertical-timeline-icon blue-bg">
+										<i class="fa fa-file-text"></i>
+									</div>
 
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon blue-bg">
-                                <i class="fa fa-file-text"></i>
-                            </div>
+									<div class="vertical-timeline-content">
+										<h2>Plantilla 3</h2>
+										<p>Go to shop and find some products. Lorem Ipsum is
+											simply dummy text of the printing and typesetting industry.
+											Lorem Ipsum has been the industry's.</p>
+										<a href="#" class="btn btn-sm btn-primary"> Ver mas</a> <span
+											class="vertical-date"> Yesterday <br/>
+										<small>Dec 23</small></span>
+									</div>
+								</div>
 
-                            <div class="vertical-timeline-content">
-                                <h2>Plantilla 2</h2>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                                <a href="#" class="btn btn-sm btn-primary"> Ver mas</a>
-                                    <span class="vertical-date">
-                                        Today <br>
-                                        <small>Dec 24</small>
-                                    </span>
-                            </div>
-                        </div>
+								<div class="vertical-timeline-block">
+									<div class="vertical-timeline-icon blue-bg">
+										<i class="fa fa-file-text"></i>
+									</div>
 
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon blue-bg">
-                                <i class="fa fa-file-text"></i>
-                            </div>
+									<div class="vertical-timeline-content">
+										<h2>Plantilla 4</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+											elit. Iusto, optio, dolorum provident rerum aut hic quasi
+											placeat iure tempora laudantium ipsa ad debitis unde? Iste
+											voluptatibus minus veritatis qui ut.</p>
+										<a href="#" class="btn btn-sm btn-primary"> Ver mas</a> <span
+											class="vertical-date">Yesterday <br/>
+										<small>Dec 23</small></span>
+									</div>
+								</div>
 
-                            <div class="vertical-timeline-content">
-                                <h2>Plantilla 3</h2>
-                                <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
-                                <a href="#" class="btn btn-sm btn-primary"> Ver mas</a>
-                                <span class="vertical-date"> Yesterday <br><small>Dec 23</small></span>
-                            </div>
-                        </div>
+								<div class="vertical-timeline-block">
+									<div class="vertical-timeline-icon blue-bg">
+										<i class="fa fa-file-text"></i>
+									</div>
 
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon blue-bg">
-                                <i class="fa fa-file-text"></i>
-                            </div>
-
-                            <div class="vertical-timeline-content">
-                                <h2>Plantilla 4</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-                                <a href="#" class="btn btn-sm btn-primary"> Ver mas</a>
-                                <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
-                            </div>
-                        </div>
-
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon blue-bg">
-                                <i class="fa fa-file-text"></i>
-                            </div>
-
-                            <div class="vertical-timeline-content">
-                                <h2>Plantilla 5</h2>
-                                <p>Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </p>
-                                <a href="#" class="btn btn-sm btn-primary"> Ver mas</a>
-                                <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-        <div class="footer">
-            <div>
-                <strong>Copyright</strong> Sally &copy; 2014-2017
-            </div>
-        </div>
-
-        </div>
-        </div>
-
-
-
-    <!-- Mainly scripts -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
-
-    <!-- Sparkline -->
-    <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
-
-    <script>
+									<div class="vertical-timeline-content">
+										<h2>Plantilla 5</h2>
+										<p>Web sites still in their infancy. Various versions have
+											evolved over the years, sometimes by accident, sometimes on
+											purpose (injected humour and the like).</p>
+										<a href="#" class="btn btn-sm btn-primary"> Ver mas</a> <span
+											class="vertical-date">Yesterday <br/>
+										<small>Dec 23</small></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.js}"></script>
+	<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+	<script th:src="@{/js/inspinia.js}"></script>
+	<script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+	<script th:src="@{/js/plugins/sparkline/jquery.sparkline.min.js}"></script>
+	<script>
         $(document).ready(function() {
 
 
@@ -380,11 +354,7 @@
                 lineColor: '#1ab394',
                 fillColor: "transparent"
             });
-
-
         });
     </script>
-
 </body>
-
 </html>

@@ -2,6 +2,8 @@ package com.quicksoft.sally.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -20,13 +22,19 @@ import com.quicksoft.sally.service.ClienteService;
 public class ClienteController {
 	@Autowired
 	@Qualifier("clienteService")
-	private ClienteService perfilService;
+	private ClienteService clienteService;
+	
+	private Cliente clienteActual;
 	
 	@GetMapping("/consulta")
 	public ModelAndView consultarPerfil(ModelMap session, Model model) {
 		ModelAndView mov= new ModelAndView(Constants.VER_PERFIL);
-		Cliente cli = (Cliente)session.get("clienteSession");
-		mov.addObject("nombre",cli.getNombre());
+		User clienteActivo = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		clienteActual = (Cliente)session.get("clienteSession");
+		if(clienteActual == null) {
+			clienteActual = clienteService.buscarCliente(clienteActivo.getUsername());
+		}
+		mov.addObject("nombre",clienteActual.getNombre());
 		return mov;
 	}
 	
