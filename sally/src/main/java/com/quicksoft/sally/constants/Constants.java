@@ -12,9 +12,15 @@ public class Constants {
 	public static final String POPULARES_VIEW = "populares";
 	public static final String CATEGORIAS_VIEW = "categorias";
 	public static final String PLANTILLAS_VIEW = "plantillas";
-	public static final String AGREGAR_PLANTILLA = "formularioPlantilla";
+	public static final String AGREGAR_PLANTILLA = "agregarPlantilla";
+	//Resultados
+	public static final String RESULTADOS_VIEW = "resultados";
+	//Pagos
+	public static final String AGREGAR_PAGO = "/perfil/agregarPago";
+	public static final String CONSULTAR_METODOS = "/perfil/consultarPago";
 	//Perfil
-	public static final String AGREGAR_PAGO = "agregarPago";
+	public static final String VER_PERFIL = "/perfil/consultarPerfil";
+	public static final String VER_CUENTA = "/perfil/cuenta";
 	//Constantes Negocio
 	public static final Integer MSG_EXITO = 1;
 	public static final Integer MSG_DEFAULT = 0;

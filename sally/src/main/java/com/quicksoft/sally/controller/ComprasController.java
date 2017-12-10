@@ -6,15 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.quicksoft.sally.entity.Cliente;
-import com.quicksoft.sally.entity.Compra;
 import com.quicksoft.sally.entity.Plantilla;
 import com.quicksoft.sally.model.CompraModel;
 import com.quicksoft.sally.service.ComprasService;
 
 @Controller
 @RequestMapping("/compras")
+@SessionAttributes("clienteSession")
 public class ComprasController {
 	@Autowired
 	@Qualifier("comprasService")

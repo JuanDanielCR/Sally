@@ -27,7 +27,7 @@ public class PlantillaController {
 		ModelAndView mov= new ModelAndView(Constants.TARJETA_VIEW);
 		Cliente cli = (Cliente)session.get("clienteSession");
 		mov.addObject("nombre",cli.getNombre());
-		return new ModelAndView(Constants.TARJETA_VIEW);
+		return mov;
 	}
 	
 	@GetMapping("/populares")
@@ -35,7 +35,7 @@ public class PlantillaController {
 		ModelAndView mov= new ModelAndView(Constants.POPULARES_VIEW);
 		Cliente cli = (Cliente)session.get("clienteSession");
 		mov.addObject("nombre",cli.getNombre());
-		return new ModelAndView(Constants.TARJETA_VIEW);
+		return mov;
 	}
 	
 	@GetMapping("/categorias")
@@ -43,6 +43,22 @@ public class PlantillaController {
 		ModelAndView mov= new ModelAndView(Constants.CATEGORIAS_VIEW);
 		Cliente cli = (Cliente)session.get("clienteSession");
 		mov.addObject("nombre",cli.getNombre());
-		return new ModelAndView(Constants.TARJETA_VIEW);
+		return mov;
+	}
+	
+	@GetMapping("/ver")
+	public ModelAndView consultarPlantillas(ModelMap session, Model model) {
+		ModelAndView mov= new ModelAndView(Constants.CATEGORIAS_VIEW);
+		Cliente cli = (Cliente)session.get("clienteSession");
+		mov.addObject("nombre",cli.getNombre());
+		return mov;
+	}
+	
+	@GetMapping("/agregar")
+	public ModelAndView agregarPlantilla(ModelMap session, Model model) {
+		ModelAndView mov= new ModelAndView(Constants.PLANTILLAS_VIEW);
+		Cliente cli = (Cliente)session.get("clienteSession");
+		mov.addObject("nombre",cli.getNombre());
+		return mov;
 	}
 }
