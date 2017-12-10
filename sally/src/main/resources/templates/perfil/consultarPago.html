@@ -3,8 +3,8 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>SALLY | Pago</title>
 
@@ -14,8 +14,8 @@
     <!-- Toastr style -->
     <link th:href="@{/css/plugins/toastr/toastr.min.css}" rel="stylesheet"/>
 
-    <link th:href="@{/css/animate.css" rel="stylesheet}"/>
-    <link th:href="@{/css/style.css" rel="stylesheet}"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
 
 
 
@@ -29,11 +29,11 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            <img alt="image" class="img-circle" src="../img/profile_small.jpg" />
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${nombre}"></strong>
-                             </span> <span class="text-muted text-xs block">Usuario Normal</span> </span> </a>
+                            </span> <span class="text-muted text-xs block">Usuario Normal  <b class="caret"></b></span> </span> </a>
 	                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
 	                                <li><a href="/perfil/consulta">Mi Perfil</a></li>
 	                                <li><a href="/perfil/cuenta">Cuenta</a></li>
@@ -124,91 +124,9 @@
         </div>
         </div>
         <!-- menu arriba -->
-
-        <div class="row wrapper border-bottom white-bg page-heading">
-            <div class="col-lg-10">
-                <h2>Métodos de Pago</h2>
-            </div>
-        </div>
-
-        <div class="wrapper wrapper-content animated fadeInRight">
-
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="payment-card">
-                        <i class="fa fa-cc-visa payment-icon-big text-success"></i>
-                        <h2>
-                            **** **** **** 1060
-                        </h2>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <small>
-                                    <strong>Expiry date:</strong> 10/16
-                                </small>
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <small>
-                                    <strong>Name:</strong> David Williams
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="payment-card">
-                        <i class="fa fa-cc-mastercard payment-icon-big text-warning"></i>
-                        <h2>
-                            **** **** **** 7002
-                        </h2>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <small>
-                                    <strong>Expiry date:</strong> 10/16
-                                </small>
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <small>
-                                    <strong>Name:</strong> Anna Smith
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="payment-card">
-                        <i class="fa fa-cc-discover payment-icon-big text-danger"></i>
-                        <h2>
-                            **** **** **** 3466
-                        </h2>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <small>
-                                    <strong>Expiry date:</strong> 10/16
-                                </small>
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <small>
-                                    <strong>Name:</strong> Morgan Stanch
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p>
-                <a href="Agregar-Pago.html"><button type="button" class="btn btn-block btn-outline btn-primary"><i class="fa fa-plus-circle"> </i>Agregar método de pago</button></a>
-            </p>
-        </div>
-        <div class="footer">
-            <div>
-                <strong>Copyright</strong> Sally &copy; 2017-2018
-            </div>
-        </div>
+        
+        contenido
     </div>
-    </div>
-
-</div>
 
 
 <!-- Mainly scripts -->
@@ -222,3 +140,4 @@
     <script th:src="@{/js/plugins/pace/pace.min.js}"></script>
 
 </body>
+</html>
