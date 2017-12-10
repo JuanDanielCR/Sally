@@ -20,6 +20,8 @@ public class DashboardController {
 	
 	private static final String DASHBOARD_VIEW = "base";
 	public Cliente clienteSession;
+	public Cliente clienteActual;
+	
 	@Autowired
 	@Qualifier("dashboardService")
 	private DashboardService dashboardService;
@@ -32,15 +34,18 @@ public class DashboardController {
 	public ModelAndView mostrarDashboard(ModelMap model) {
 		ModelAndView mov = new ModelAndView(DASHBOARD_VIEW);
 		User clienteActivo = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//Suiendo a session
+		//Subiendo a session
 		if(clienteSession == null) {
 			clienteSession = clienteService.buscarCliente(clienteActivo.getUsername());
 			if(clienteSession != null) {
 				model.put("clienteSession", clienteSession);
 			}
+			clienteActual = (Cliente)model.get("clienteSession");
+		}else {
+			clienteActual = clienteService.buscarCliente(clienteActivo.getUsername());
 		}
-		Cliente cli = (Cliente)model.get("clienteSession");
-		mov.addObject("nombre",cli.getNombre());
+		
+		mov.addObject("nombre",clienteActual.getNombre());
 		return mov;
 	}
 }
