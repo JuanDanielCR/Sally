@@ -1,14 +1,14 @@
 package com.quicksoft.sally.model;
 
-public class Plantilla {
+public class PlantillaModel {
 	private Integer estatus;
 	private ClienteModel creador;
 	private ClienteModel dueño;
 	private String objetivo;
-	public Plantilla() {
+	public PlantillaModel() {
 		super();
 	}
-	public Plantilla(Integer estatus, ClienteModel creador, ClienteModel dueño, String objetivo) {
+	public PlantillaModel(Integer estatus, ClienteModel creador, ClienteModel dueño, String objetivo) {
 		super();
 		this.estatus = estatus;
 		this.creador = creador;

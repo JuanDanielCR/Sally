@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -42,14 +43,19 @@ public class Plantilla {
 	
 	@ManyToMany
 	@JoinTable(name="plantilla_tipo")
-	public List<Tipo> tipos;
+	private List<Tipo> tipos;
+	
+	@OneToMany(mappedBy="plantilla", fetch=FetchType.LAZY)
+	private List<Criterio> criterios;
+	
+	private Integer numCriterios;
 	
 	public Plantilla() {
 		
 	}
-	
+
 	public Plantilla(Integer idPlantilla, String objetivo, Integer version, Integer isPropia, Integer estatus,
-			Integer idCreador, Cliente cliente, List<Tipo> tipos) {
+			Integer idCreador, Cliente cliente, List<Tipo> tipos, List<Criterio> criterios, Integer numCriterios) {
 		super();
 		this.idPlantilla = idPlantilla;
 		this.objetivo = objetivo;
@@ -59,6 +65,8 @@ public class Plantilla {
 		this.idCreador = idCreador;
 		this.cliente = cliente;
 		this.tipos = tipos;
+		this.criterios = criterios;
+		this.numCriterios = numCriterios;
 	}
 
 	public Integer getIdPlantilla() {
@@ -110,6 +118,22 @@ public class Plantilla {
 
 	public void setTipos(List<Tipo> tipos) {
 		this.tipos = tipos;
+	}
+
+	public Integer getNumCriterios() {
+		return numCriterios;
+	}
+
+	public void setNumCriterios(Integer numCriterios) {
+		this.numCriterios = numCriterios;
+	}
+
+	public List<Criterio> getCriterios() {
+		return criterios;
+	}
+
+	public void setCriterios(List<Criterio> criterios) {
+		this.criterios = criterios;
 	}
 	
 	

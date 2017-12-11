@@ -2,8 +2,8 @@ package com.quicksoft.sally.service;
 
 import java.util.List;
 
-import com.quicksoft.sally.model.Plantilla;
+import com.quicksoft.sally.model.PlantillaModel;
 
 public interface DashboardService {
-	public abstract List<Plantilla> getRecomendaciones();
+	public abstract List<PlantillaModel> getRecomendaciones();
 }

@@ -13,6 +13,7 @@ public class Constants {
 	public static final String CATEGORIAS_VIEW = "categorias";
 	public static final String PLANTILLAS_VIEW = "plantillas";
 	public static final String AGREGAR_PLANTILLA = "/plantillas/agregarPlantilla";
+	public static final String AGREGAR_CRITERIOS = "/plantillas/agregarCriterios";
 	//Resultados
 	public static final String RESULTADOS_VIEW = "resultados";
 	//Pagos

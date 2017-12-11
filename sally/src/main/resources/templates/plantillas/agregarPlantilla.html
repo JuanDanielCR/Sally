@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Base Sally</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+<link th:href="@{/css/plugins/toastr/toastr.min.css}" rel="stylesheet" />
+<link th:href="@{/js/plugins/gritter/jquery.gritter.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/animate.css}" rel="stylesheet" />
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+	<div id="wrapper">
+		<!-- Menu lateral -->
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<span> <img alt="image" class="img-circle"
+								src="../img/profile_small.jpg" />
+							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear"> <span class="block m-t-xs"> <strong
+										class="font-bold" th:text="${nombre}"></strong>
+								</span> <span class="text-muted text-xs block">Usuario Normal <b
+										class="caret"></b></span>
+							</span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li><a href="/perfil/consulta">Mi Perfil</a></li>
+								<li><a href="/perfil/cuenta">Cuenta</a></li>
+								<li class="divider"></li>
+							</ul>
+						</div>
+						<div class="logo-element">Sally</div>
+					</li>
+					<li><a href="#"><i class="fa fa-user-circle-o"></i> <span
+							class="nav-label">Explorar</span> <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="/plantilla/populares">Populares</a></li>
+							<li><a href="/plantilla/recomendadas">Recomendadas</a></li>
+							<li><a href="/plantilla/categorias">Categorías</a></li>
+						</ul></li>
+					<li><a href="#"><i class="fa fa-bar-chart-o"></i> <span
+							class="nav-label">Mis Plantillas</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a href="/plantilla/consulta">Ver Plantillas</a></li>
+							<li><a href="/plantilla/agregar">Crear Plantilla</a></li>
+						</ul></li>
+					<li><a href="/resultados/historial"><i
+							class="fa fa-diamond"></i> <span class="nav-label">Historial
+								de Resultados</span></a></li>
+					<li><a href="#"><i class="fa fa-bar-chart-o"></i> <span
+							class="nav-label">Mis Compras</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a href="/pagos/agregar">Agregar Método de Pago</a></li>
+							<li><a href="/pagos/metodos">Ver Métodos de Pago</a></li>
+							<li><a href="/resultados/historial">Historial de Compras</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Menu lateral -->
+		<!-- Menu abajo -->
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom"
+							action="search_results.html">
+							<div class="form-group">
+								<input type="text" placeholder="Buscar..." class="form-control"
+									name="top-search" id="top-search" />
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+						<li><span class="m-r-sm text-muted welcome-message">Sally</span>
+						</li>
+						<li class="dropdown"><a class="dropdown-toggle count-info"
+							data-toggle="dropdown" href="#"> <i class="fa fa-bell"></i> <span
+								class="label label-primary">3</span>
+						</a>
+							<ul class="dropdown-menu dropdown-alerts">
+								<li><a href="notificacion.html">
+										<div>
+											<i class="fa fa-check-circle-o"></i> Tu plantilla1 ha sido
+											publicada <span class="pull-right text-muted small">
+												hace 10 minutos</span>
+										</div>
+								</a></li>
+								<li class="divider"></li>
+								<li>
+									<div class="text-center link-block">
+										<a href="notification.html"> <strong>Ver todas
+												las notificaciones</strong> <i class="fa fa-angle-right"></i>
+										</a>
+									</div>
+								</li>
+							</ul></li>
+						<li>
+							<form th:action="@{/sally/logout}" method="POST">
+								<input type="submit" class="btn btn-success" value="Salir" />
+							</form>
+						</li>
+					</ul>
+				</nav>
+				<!-- menu arriba -->
+				<div class="row  border-bottom white-bg dashboard-header">
+					<div class="col-lg-10 col-lg-offset-1">
+						<h1 class="text-center">Agregar Plantilla</h1>
+						<small class="text-info">Progreso</small>
+						<div class="progress progress-bar-default">
+							<div style="width: 50%" aria-valuemax="100" aria-valuemin="0"
+								aria-valuenow="50" role="progressbar" class="progress-bar">
+								<span class="sr-only">50% Complete (success)</span>
+							</div>
+						</div>
+						<h1>Informacion General</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna
+							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+							aute irure dolor in reprehenderit in voluptate velit esse cillum
+							dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+							cupidatat non proident, sunt in culpa qui officia deserunt mollit
+							anim id est laborum.</p>
+						<form method="POST" class="form-horizontal" th:action="@{/plantilla/agregar}" th:object="${plantilla}">
+							<!--Objetivo-->
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Objetivo</label>
+								<div class="col-sm-10">
+									<input type="text" th:field="*{objetivo}" class="form-control"
+										placeholder="Decidir que automóvil comprar" required="true" />
+									<span class="help-block m-b-none">¿Por qué estoy
+										haciendo esta plantilla?</span>
+								</div>
+							</div>
+							<!--Version-->
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Versión</label>
+								<div class="col-sm-10">
+									<input type="number" th:field="*{version}" class="form-control" placeholder="1"
+										min="1" required="true" /> <span class="help-block m-b-none">Sabemos
+										que no es fácil tomar decisiones a la primera</span>
+								</div>
+							</div>
+							<!--Categoria-->
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Categoría</label>
+								<div class="col-sm-10">
+									<select class="form-control m-b" name="account" required="true">
+										<option>Salud</option>
+										<option>Económica</option>
+										<option>Profesional</option>
+										<option>Diaria</option>
+									</select> <span class="help-block m-b-none">Clasificar te ayudará
+										a tener un mejor panorama</span>
+								</div>
+							</div>
+							<!--Numero criterios-->
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Criterios</label>
+								<div class="col-sm-10">
+									<input type="number" th:field="*{numCriterios}" class="form-control" placeholder="1"
+										min="1" required="true" /> <span class="help-block m-b-none">Ej.
+										Sally piensa que para comprar un auto hay hasta 10 factores
+										importantes, como el costo, color, etc.</span>
+								</div>
+							</div>
+							<!--Botones-->
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Acción</label>
+								<div class="col-sm-4 col-sm-offset-2">
+									<button class="btn btn-white" type="reset">Me
+										equivoque</button>
+									<button class="btn btn-primary" type="button"
+										data-toggle="modal" data-target="#modalGeneral">Continuar</button>
+								</div>
+							</div>
+
+							<!--Modal-->
+							<div class="modal inmodal" id="modalGeneral" tabindex="-1"
+								role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content animated bounceInRight">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+											</button>
+											<i class="fa fa-laptop modal-icon"></i>
+											<h4 class="modal-title">Agregar Plantilla</h4>
+											<small class="font-bold">Felicidades has creado una
+												plantilla</small>
+										</div>
+										<div class="modal-body">
+											<p>
+												<strong>El primer paso</strong> para tomar una decisión es
+												saber que queremos lograr, ahora deberás ingresar los
+												criterios que consideras importantes para llegar a tu
+												objetivo.
+											</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-white"
+												data-dismiss="modal">Cerrar</button>
+											<button type="submit" class="btn btn-primary">Aceptar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+	<script th:src="@{/js/plugins/flot/jquery.flot.js}"></script>
+	<script th:src="@{/js/plugins/flot/jquery.flot.tooltip.min.js}"></script>
+	<script th:src="@{/js/plugins/flot/jquery.flot.spline.js}"></script>
+	<script th:src="@{/js/plugins/flot/jquery.flot.resize.js}"></script>
+	<script th:src="@{/js/plugins/flot/jquery.flot.pie.js}"></script>
+	<script th:src="@{/js/plugins/peity/jquery.peity.min.js}"></script>
+	<script th:src="@{/js/demo/peity-demo.js}"></script>
+	<script th:src="@{/js/inspinia.js}"></script>
+	<script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+	<script th:src="@{/js/plugins/jquery-ui/jquery-ui.min.js}"></script>
+	<script th:src="@{/js/plugins/gritter/jquery.gritter.min.js}"></script>
+	<script th:src="@{/js/plugins/sparkline/jquery.sparkline.min.js}"></script>
+	<script th:src="@{/js/plugins/chartJs/Chart.min.js}"></script>
+	<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+</body>
+</html>
