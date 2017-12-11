@@ -32,6 +32,8 @@ public class PlantillaImpl implements PlantillaService{
 		List<Plantilla> resultado = plantillaRepository.findAll();
 		List<Plantilla> plantillas = new ArrayList<>();
 		for(Plantilla p:resultado) {
+			System.out.println("paltnilla : "+p.toString()+" cliente: "+cliente.getIdCliente());
+			
 			if(p.getIdCreador().equals(cliente.getIdCliente())) {
 				plantillas.add(p);
 			}
@@ -60,6 +62,6 @@ public class PlantillaImpl implements PlantillaService{
 			criterio.setCriterioId(c);
 			criterio = criterioRepository.save(criterio);
 		}
-		return plantillaRepository.save(plantilla);
+		return plantilla;
 	}
 }
