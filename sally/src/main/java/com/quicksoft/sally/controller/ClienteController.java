@@ -35,6 +35,11 @@ public class ClienteController {
 			clienteActual = clienteService.buscarCliente(clienteActivo.getUsername());
 		}
 		mov.addObject("nombre",clienteActual.getNombre());
+		mov.addObject("apellidoP",clienteActual.getApellidoPaterno());
+		mov.addObject("rol", clienteActual.getRoles());
+		mov.addObject("ocupacion",clienteActual.getOcupacion());
+		mov.addObject("correo", clienteActual.getCorreo());
+		mov.addObject("telefono",clienteActual.getContactos());
 		return mov;
 	}
 	

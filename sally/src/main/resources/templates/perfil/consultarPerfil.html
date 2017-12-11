@@ -26,7 +26,7 @@
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong
 										class="font-bold" th:text="${nombre}"></strong>
-								</span> <span class="text-muted text-xs block">Usuario Normal <b
+								</span> <span class="text-muted text-xs block">Experto<b
 										class="caret"></b></span>
 							</span>
 							</a>
@@ -129,10 +129,9 @@
 							<div class="profile-info">
 								<div class="">
 									<div>
-										<h2 class="no-margins">Paul Krugman</h2>
-										<h4>Doctor en Economía</h4>
-										<small> The rich are different from you and me: they
-											have more influence. </small>
+										<h2 class="no-margins" th:text=" ${nombre}"></h2>
+										<h4 >Ingeniero</h4>
+										<small> Los ricos son diferentes de ti y de mi: ellos tienen mas influencia </small>
 									</div>
 								</div>
 							</div>
@@ -141,10 +140,10 @@
 							<table class="table small m-b-xs">
 								<tbody>
 									<tr>
-										<td><strong>150</strong> Plantillas</td>
+										<td><strong>1</strong> Plantillas</td>
 									</tr>
 									<tr>
-										<td><strong>53</strong> Comentarios</td>
+										<td><strong>2</strong> Comentarios</td>
 									</tr>
 								</tbody>
 							</table>
@@ -157,13 +156,9 @@
 								<div class="ibox-content">
 									<h3>Información</h3>
 									<p class="small">
-										Doctorado en Economía en el Instituto Tecnológico de
+										Ingeniero en sistemas en el Instituto Tecnológico de
 										Massachusetts (MIT) <br /> Ha escrito más de 200 artículos y
 										21 libros ,alguno de ellos académicos y otros de divulgación.<br />
-										Su Economía Internacional: La teoría y política es un libro de
-										texto estándar en la economía internacional.También ha escrito
-										más de 750 columnas sobre temas económicos y políticos para
-										The New York Times, Fortune y Slate.
 									</p>
 									<p class="small font-bold">
 										<span><i class="fa fa-circle text-navy"></i> Usuario
@@ -175,10 +170,10 @@
 								<div class="widget lazur-bg p-xl">
 									<h2>Contacto</h2>
 									<ul class="list-unstyled m-t-md">
-										<li><span class="fa fa-envelope m-r-xs"></span> <label>Email:</label>
-											mike@mail.com</li>
-										<li><span class="fa fa-phone m-r-xs"></span> <label>Contact:</label>
-											(55)4678 3462</li>
+										<li><span class="fa fa-envelope m-r-xs"></span> <label>Email:</label><span th:text="${correo}"></span>
+										</li>
+										<li><span class="fa fa-phone m-r-xs"></span> <label>Contact:</label><span>5534517312</span>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -192,24 +187,9 @@
 												class="img-circle" src="../img/a2.jpg"/>
 											</a>
 											<div class="media-body ">
-												<small class="pull-right text-navy">1m ago</small> <strong>Mike
-													Smith</strong>
-												<p class="m-b-xs">Lorem Ipsum is simply dummy text of
-													the printing and typesetting industry. Lorem Ipsum has been
+												<small class="pull-right text-navy">Hace un dia</small> <strong>Jose Ricardo</strong>
+												<p class="m-b-xs">Me agradan tus plantillas deberias hacer mas
 												</p>
-												<small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-											</div>
-										</div>
-										<div class="chat-element right">
-											<a href="#" class="pull-right"> <img alt="image"
-												class="img-circle" src="../img/a4.jpg"/>
-											</a>
-											<div class="media-body text-right ">
-												<small class="pull-left">5m ago</small> <strong>John
-													Smith</strong>
-												<p class="m-b-xs">Lorem Ipsum is simply dummy text of
-													the printing.</p>
-												<small class="text-muted">Today 4:21 pm - 12.06.2014</small>
 											</div>
 										</div>
 										<div class="chat-element ">
@@ -217,12 +197,9 @@
 												class="img-circle" src="../img/a2.jpg"/>
 											</a>
 											<div class="media-body ">
-												<small class="pull-right">2h ago</small> <strong>Mike
-													Smith</strong>
-												<p class="m-b-xs">Lorem Ipsum is simply dummy text of
-													the printing and typesetting industry. Lorem Ipsum has been
+												<small class="pull-right">Hace dos dias</small> <strong>Juan Castillo</strong>
+												<p class="m-b-xs">Podrías hacer una plantilla para ayudarme decidir, que sistema operativo es mejor.
 												</p>
-												<small class="text-muted">Today 4:21 pm - 12.06.2014</small>
 											</div>
 										</div>
 									</div>
@@ -243,7 +220,7 @@
 						</div>
 						<div class="col-lg-4 m-b-lg">
 							<h2>
-								<strong>Plantillas agregadas por mi</strong>
+								<strong>Plantillas agregadas</strong>
 							</h2>
 							<div id="vertical-timeline"
 								class="vertical-container light-timeline no-margins">

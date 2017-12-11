@@ -15,7 +15,7 @@ public class TestCrypt {
 	public static void main(String[] args) {
 		
 		BCryptPasswordEncoder b =  new BCryptPasswordEncoder();
-		System.out.println("cifrada"+b.encode("lluvias"));
+		System.out.println("cifrada"+b.encode("minimonica"));
 		
 		/*Conekta.setApiKey("key_ierxo5AtM39sB54smPTAXw");
 		Conekta.apiVersion = "2.0.0";
