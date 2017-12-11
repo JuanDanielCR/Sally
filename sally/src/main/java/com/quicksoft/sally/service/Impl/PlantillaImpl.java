@@ -1,5 +1,6 @@
 package com.quicksoft.sally.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.quicksoft.sally.entity.Cliente;
 import com.quicksoft.sally.entity.Criterio;
+import com.quicksoft.sally.entity.CriterioId;
 import com.quicksoft.sally.entity.Plantilla;
-import com.quicksoft.sally.model.PlantillaModel;
 import com.quicksoft.sally.repository.CriterioRepository;
 import com.quicksoft.sally.repository.PlantillaRepository;
 import com.quicksoft.sally.service.PlantillaService;
@@ -27,9 +28,15 @@ public class PlantillaImpl implements PlantillaService{
 	
 	
 	
-	public List<PlantillaModel> getPlantillas() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Plantilla> getPlantillas(Cliente cliente) {
+		List<Plantilla> resultado = plantillaRepository.findAll();
+		List<Plantilla> plantillas = new ArrayList<>();
+		for(Plantilla p:resultado) {
+			if(p.getIdCreador().equals(cliente.getIdCliente())) {
+				plantillas.add(p);
+			}
+		}
+		return plantillas;
 	}
 
 	@Override
@@ -43,10 +50,14 @@ public class PlantillaImpl implements PlantillaService{
 
 	@Override
 	public Plantilla actualizarPlantilla(Plantilla plantilla) {
+		int i = 0;
 		for(Criterio criterio: plantilla.getCriterios()) {
+			CriterioId c = new CriterioId();
+			c.setIdCliente(plantilla.getCliente().getIdCliente());
+			c.setIdPlantilla(plantilla.getIdPlantilla());
+			c.setIdCriterio(i++);
 			criterio.setPlantilla(plantilla);
-			criterio.getCriterioId().setIdCliente(plantilla.getIdCreador());
-			criterio.getCriterioId().setIdPlantilla(plantilla.getIdPlantilla());
+			criterio.setCriterioId(c);
 			criterio = criterioRepository.save(criterio);
 		}
 		return plantillaRepository.save(plantilla);

@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
 
 @Embeddable
 public class CriterioId implements Serializable{
 	
 	private static final long serialVersionUID = -7731568729788630804L;
-
+	
+	
 	@Column(name="id_criterio")
 	private Integer idCriterio;
 

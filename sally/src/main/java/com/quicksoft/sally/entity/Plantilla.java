@@ -142,6 +142,13 @@ public class Plantilla implements Serializable{
 	public void setCriterios(List<Criterio> criterios) {
 		this.criterios = criterios;
 	}
+
+	@Override
+	public String toString() {
+		return "Plantilla [idPlantilla=" + idPlantilla + ", objetivo=" + objetivo + ", version=" + version
+				+ ", isPropia=" + isPropia + ", estatus=" + estatus + ", idCreador=" + idCreador + ", cliente="
+				+ cliente + ", tipos=" + tipos + ", criterios=" + criterios + ", numCriterios=" + numCriterios + "]";
+	}
 	
 	
 }

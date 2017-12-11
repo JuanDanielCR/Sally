@@ -133,8 +133,15 @@ public class PlantillaController {
 	}
 	
 	@PostMapping("/agregarCriterios")
-	public String agregarCriterios(@ModelAttribute("plantillaRegistro") Plantilla plantilla) {
+	public String agregarCriterios(ModelMap session, @ModelAttribute("plantillaRegistro") Plantilla plantilla) {
 		String redirect="";
+		
+		Plantilla plantillaSession = (Plantilla)session.get("plantillaSession");
+		System.out.println("session: "+plantillaSession.toString());
+		plantilla.setIdCreador(plantillaSession.getIdCreador());
+		plantilla.setCliente(plantillaSession.getCliente());
+		plantilla.setIdPlantilla(plantillaSession.getIdPlantilla());
+		System.out.println("envio: "+plantilla.toString());
 		plantilla = plantillaService.actualizarPlantilla(plantilla);
 		if(plantilla!=null) {
 			redirect = "/dashboard";
