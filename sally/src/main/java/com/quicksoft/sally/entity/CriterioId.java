@@ -12,10 +12,7 @@ public class CriterioId implements Serializable{
 
 	@Column(name="id_criterio")
 	private Integer idCriterio;
-	
-	@Column(name="id_solucion")
-	private Integer idSolucion;
-	
+
 	@Column(name="id_cliente")
 	private Integer idCliente;
 	
@@ -26,10 +23,9 @@ public class CriterioId implements Serializable{
 		
 	}
 	
-	public CriterioId(Integer idCriterio, Integer idSolucion, Integer idCliente, Integer idPlantilla) {
+	public CriterioId(Integer idCriterio, Integer idCliente, Integer idPlantilla) {
 		super();
 		this.idCriterio = idCriterio;
-		this.idSolucion = idSolucion;
 		this.idCliente = idCliente;
 		this.idPlantilla = idPlantilla;
 	}
@@ -40,14 +36,6 @@ public class CriterioId implements Serializable{
 
 	public void setIdCriterio(Integer idCriterio) {
 		this.idCriterio = idCriterio;
-	}
-
-	public Integer getIdSolucion() {
-		return idSolucion;
-	}
-
-	public void setIdSolucion(Integer idSolucion) {
-		this.idSolucion = idSolucion;
 	}
 
 	public Integer getIdCliente() {

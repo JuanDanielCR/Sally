@@ -1,5 +1,6 @@
 package com.quicksoft.sally.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,7 +17,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="plantilla")
-public class Plantilla {
+public class Plantilla implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8202798191849681732L;
+
 	@Id
 	@GeneratedValue
 	@Column(name="id_plantilla")

@@ -126,23 +126,18 @@ public class PlantillaController {
 			criterio.setCriterioId(criterioId);
 			criterios.add(criterio);
 		}
+		plantilla.setCriterios(criterios);
 		mov.addObject("criterios", criterios);
+		mov.addObject("plantilla", plantilla);
 		return mov;
 	}
 	
 	@PostMapping("/agregarCriterios")
 	public String agregarCriterios(@ModelAttribute("plantillaRegistro") Plantilla plantilla) {
 		String redirect="";
-		if(!plantilla.getCriterios().isEmpty()) {
-			for(Criterio criterio: plantilla.getCriterios()) {
-				System.out.println("criterio: "+criterio.getDescripcion());
-			}
-		}else {
-			System.out.println("vacia-------------------");
-		}
 		plantilla = plantillaService.actualizarPlantilla(plantilla);
 		if(plantilla!=null) {
-			redirect = Constants.DASHBOARD_VIEW;
+			redirect = "/dashboard";
 		}else {
 			redirect = Constants.AGREGAR_PLANTILLA;
 		}

@@ -3,7 +3,6 @@ package com.quicksoft.sally.entity;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -30,6 +29,8 @@ public class Criterio {
 		@JoinColumn(name="id_plantilla", referencedColumnName="id_plantilla", insertable=false, updatable=false)
 	})
 	private Plantilla plantilla;
+	
+	
 	
 	public Criterio(){
 		

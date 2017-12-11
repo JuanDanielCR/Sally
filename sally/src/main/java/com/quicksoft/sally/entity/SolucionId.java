@@ -18,17 +18,25 @@ public class SolucionId implements Serializable{
 	
 	@Column(name="id_cliente")
 	private Integer idCliente;
-
+	
+	@Column(name="id_criterio")
+	private Integer idCriterio;
+	
 	public SolucionId() {
 		
 	}
 	
-	public SolucionId(Integer idSolucion, Integer idPlantilla, Integer idCliente) {
+	
+
+	public SolucionId(Integer idSolucion, Integer idPlantilla, Integer idCliente, Integer idCriterio) {
 		super();
 		this.idSolucion = idSolucion;
 		this.idPlantilla = idPlantilla;
 		this.idCliente = idCliente;
+		this.idCriterio = idCriterio;
 	}
+
+
 
 	public Integer getIdSolucion() {
 		return idSolucion;
@@ -62,6 +70,14 @@ public class SolucionId implements Serializable{
 	@Override
 	public int hashCode() {
 		return super.hashCode();
+	}
+
+	public Integer getIdCriterio() {
+		return idCriterio;
+	}
+
+	public void setIdCriterio(Integer idCriterio) {
+		this.idCriterio = idCriterio;
 	}
 	
 }
