@@ -124,20 +124,22 @@
                       </div>
                       <form method="POST" th:action="@{/sally/cliente}" th:object="${clienteRegistro}" class="form-horizontal">
                         <!--Criterio repeat-->
-                        <div  th:each="criterio : ${criterios}">
+                        <div  th:each="criterio : *{criterios}">
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label text-navy">Criterio</label>
                             <div class="col-sm-10">
                               <input type="text" placeholder="Precio del automóvil" id="exampleInputEmail2"
-                                     class="form-control" th:field="*{criterio.descripcion}" />
+                                     class="form-control" th:field="*{criterios[__${criterio.index}__].descripcion}" />
             									<span class="help-block m-b-none">El precio de un automóvil es muy importante - Sally</span>
                               <input type="number" placeholder="0-10" min="0" max="10" id="exampleInputPassword2"
-                                       class="form-control" th:field="*{criterio.ponderacion}"/>
+                                       class="form-control" th:field="*{criterios[__${criterio.index}__].ponderacion}"/>
                               <span class="help-block m-b-none">Sí tienes mucho dinero probablemente pondrás un 0</span>
             				</div>
                         </div>
                         </div>
+                              
+                        
                         <button type="submit" id="btnRegistro" class="btn btn-primary block full-width m-b">Aceptar</button>
                         <!--repeat-->
                       </form>

@@ -27,6 +27,9 @@ public class PlantillaImpl implements PlantillaService{
 	@Override
 	public Plantilla agregarPlantilla(Plantilla plantilla, Cliente cliente) {
 		plantilla.setIdCreador(cliente.getIdCliente());
+		plantilla.setIsPropia(1);
+		plantilla.setEstatus(1);
+		plantilla.setCliente(cliente);
 		return plantillaRepository.save(plantilla);
 	}
 

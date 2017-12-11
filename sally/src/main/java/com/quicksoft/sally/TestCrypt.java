@@ -13,7 +13,11 @@ import io.conekta.Order;
 public class TestCrypt {
 
 	public static void main(String[] args) {
-		Conekta.setApiKey("key_ierxo5AtM39sB54smPTAXw");
+		
+		BCryptPasswordEncoder b =  new BCryptPasswordEncoder();
+		System.out.println("cifrada"+b.encode("lluvias"));
+		
+		/*Conekta.setApiKey("key_ierxo5AtM39sB54smPTAXw");
 		Conekta.apiVersion = "2.0.0";
 		try{  
 			Customer customer = Customer.create(
@@ -74,7 +78,7 @@ public class TestCrypt {
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 

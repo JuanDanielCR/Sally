@@ -84,14 +84,16 @@ public class PlantillaController {
 			clienteActual = clienteService.buscarCliente(clienteActivo.getUsername());
 		}
 		mov.addObject("nombre",clienteActual.getNombre());
+		mov.addObject("plantilla", new Plantilla() );
 		return mov;
 	}
-	@PostMapping("/agregar")
+	@PostMapping("/agregarPlantilla")
 	public String agregarPlantilla(ModelMap session, @ModelAttribute("plantilla")Plantilla plantilla) {
 		String redirect;
+		System.out.println("agregnado plantilla");
 		plantilla = plantillaService.agregarPlantilla(plantilla, clienteActual);
 		if(plantilla != null) {
-			session.put("clienteSession", plantilla);
+			session.put("plantillaSession", plantilla);
 			redirect = Constants.AGREGAR_CRITERIOS;
 		}else {
 			redirect = Constants.AGREGAR_PLANTILLA;
@@ -99,7 +101,7 @@ public class PlantillaController {
 		return "redirect:"+redirect;
 	}
 	
-	@GetMapping("/addCriterio")
+	@GetMapping("/agregarCriterios")
 	public ModelAndView agregarCriterio(ModelMap session, Model model) {
 		ModelAndView mov= new ModelAndView(Constants.AGREGAR_CRITERIOS);
 		//Cliente
@@ -128,7 +130,7 @@ public class PlantillaController {
 		return mov;
 	}
 	
-	@PostMapping("/addCriterio")
+	@PostMapping("/agregarCriterios")
 	public String agregarCriterios(@ModelAttribute("plantillaRegistro") Plantilla plantilla) {
 		String redirect="";
 		if(!plantilla.getCriterios().isEmpty()) {
